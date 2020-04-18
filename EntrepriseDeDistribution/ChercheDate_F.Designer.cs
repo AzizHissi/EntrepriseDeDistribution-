@@ -1,6 +1,6 @@
 ﻿namespace EntrepriseDeDistribution
 {
-    partial class ChercheDate
+    partial class ChercheDate_F
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,16 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChercheDate));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChercheDate_F));
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dt_f = new System.Windows.Forms.DateTimePicker();
+            this.dt_d = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_search = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -65,8 +65,8 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.dateTimePicker2);
-            this.panel1.Controls.Add(this.dateTimePicker1);
+            this.panel1.Controls.Add(this.dt_f);
+            this.panel1.Controls.Add(this.dt_d);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Location = new System.Drawing.Point(119, 14);
@@ -74,23 +74,23 @@
             this.panel1.Size = new System.Drawing.Size(332, 89);
             this.panel1.TabIndex = 10;
             // 
-            // dateTimePicker2
+            // dt_f
             // 
-            this.dateTimePicker2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(135, 49);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(174, 23);
-            this.dateTimePicker2.TabIndex = 11;
+            this.dt_f.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_f.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dt_f.Location = new System.Drawing.Point(135, 49);
+            this.dt_f.Name = "dt_f";
+            this.dt_f.Size = new System.Drawing.Size(174, 23);
+            this.dt_f.TabIndex = 11;
             // 
-            // dateTimePicker1
+            // dt_d
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(135, 14);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(174, 23);
-            this.dateTimePicker1.TabIndex = 10;
+            this.dt_d.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dt_d.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dt_d.Location = new System.Drawing.Point(135, 14);
+            this.dt_d.Name = "dt_d";
+            this.dt_d.Size = new System.Drawing.Size(174, 23);
+            this.dt_d.TabIndex = 10;
             // 
             // label3
             // 
@@ -115,28 +115,29 @@
             // panel2
             // 
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.button1);
+            this.panel2.Controls.Add(this.btn_search);
             this.panel2.Location = new System.Drawing.Point(475, 14);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(157, 89);
             this.panel2.TabIndex = 13;
             // 
-            // button1
+            // btn_search
             // 
-            this.button1.BackColor = System.Drawing.Color.Green;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(9, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 32);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "RECHERCHER";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_search.BackColor = System.Drawing.Color.Green;
+            this.btn_search.FlatAppearance.BorderSize = 0;
+            this.btn_search.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_search.Image = ((System.Drawing.Image)(resources.GetObject("btn_search.Image")));
+            this.btn_search.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_search.Location = new System.Drawing.Point(9, 26);
+            this.btn_search.Name = "btn_search";
+            this.btn_search.Size = new System.Drawing.Size(132, 32);
+            this.btn_search.TabIndex = 0;
+            this.btn_search.Text = "RECHERCHER";
+            this.btn_search.UseVisualStyleBackColor = false;
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
             // 
-            // ChercheDate
+            // ChercheDate_F
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -144,7 +145,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.panel1);
-            this.Name = "ChercheDate";
+            this.Name = "ChercheDate_F";
             this.Size = new System.Drawing.Size(747, 433);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
@@ -163,8 +164,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Button btn_search;
+        private System.Windows.Forms.DateTimePicker dt_f;
+        private System.Windows.Forms.DateTimePicker dt_d;
     }
 }

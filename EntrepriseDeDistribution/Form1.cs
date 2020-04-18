@@ -34,7 +34,7 @@ namespace EntrepriseDeDistribution
 
         private void editionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Edition edit = new Edition();
+            Edition_F edit = new Edition_F();
             edit.ShowDialog();
         }
 

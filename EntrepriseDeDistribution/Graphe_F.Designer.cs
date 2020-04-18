@@ -1,6 +1,6 @@
 ﻿namespace EntrepriseDeDistribution
 {
-    partial class Graphe
+    partial class Graphe_F
     {
         /// <summary> 
         /// Required designer variable.

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EntrepriseDeDistribution
 {
-    public partial class Report : UserControl
+    public partial class Report_F : UserControl
     {
-        public Report()
+        public Report_F()
         {
             InitializeComponent();
         }

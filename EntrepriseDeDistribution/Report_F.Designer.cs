@@ -1,6 +1,6 @@
 ﻿namespace EntrepriseDeDistribution
 {
-    partial class Report
+    partial class Report_F
     {
         /// <summary> 
         /// Required designer variable.

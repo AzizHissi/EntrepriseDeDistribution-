@@ -41,12 +41,12 @@
             this.statistiqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quiterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.editeur1 = new EntrepriseDeDistribution.Editeur();
-            this.livre1 = new EntrepriseDeDistribution.Livre();
-            this.chercheDate1 = new EntrepriseDeDistribution.ChercheDate();
-            this.chercherEditeur1 = new EntrepriseDeDistribution.ChercherEditeur();
-            this.report1 = new EntrepriseDeDistribution.Report();
-            this.graphe1 = new EntrepriseDeDistribution.Graphe();
+            this.editeur1 = new EntrepriseDeDistribution.Editeur_F();
+            this.livre1 = new EntrepriseDeDistribution.Livre_F();
+            this.chercheDate1 = new EntrepriseDeDistribution.ChercheDate_F();
+            this.chercherEditeur1 = new EntrepriseDeDistribution.ChercherEditeur_F();
+            this.report1 = new EntrepriseDeDistribution.Report_F();
+            this.graphe1 = new EntrepriseDeDistribution.Graphe_F();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -258,12 +258,12 @@
         private System.Windows.Forms.ToolStripMenuItem statistiqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quiterToolStripMenuItem;
         private System.Windows.Forms.Panel panel1;
-        private Editeur editeur1;
-        private Livre livre1;
-        private ChercheDate chercheDate1;
-        private ChercherEditeur chercherEditeur1;
-        private Report report1;
-        private Graphe graphe1;
+        private Editeur_F editeur1;
+        private Livre_F livre1;
+        private ChercheDate_F chercheDate1;
+        private ChercherEditeur_F chercherEditeur1;
+        private Report_F report1;
+        private Graphe_F graphe1;
     }
 }
 

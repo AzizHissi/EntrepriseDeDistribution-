@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace EntrepriseDeDistribution
 {
-    public partial class ChercherEditeur : UserControl
+    public partial class ChercherEditeur_F : UserControl
     {
-        public ChercherEditeur()
+        public ChercherEditeur_F()
         {
             InitializeComponent();
         }

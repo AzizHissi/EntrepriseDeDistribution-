@@ -12,20 +12,15 @@ namespace EntrepriseDeDistribution
     using System;
     using System.Collections.Generic;
     
-    public partial class Editeur
+    public partial class Stock
     {
-        public Editeur()
-        {
-            this.Editions = new HashSet<Edition>();
-            this.Stocks = new HashSet<Stock>();
-        }
-    
+        public int Numero_Livre { get; set; }
         public int Numero_Editeur { get; set; }
-        public string Nom_Editeur { get; set; }
-        public string Raison_Sociale { get; set; }
-        public string Adresse { get; set; }
+        public int Numero_Depot { get; set; }
+        public Nullable<int> Quantite { get; set; }
     
-        public virtual ICollection<Edition> Editions { get; set; }
-        public virtual ICollection<Stock> Stocks { get; set; }
+        public virtual Depot Depot { get; set; }
+        public virtual Editeur Editeur { get; set; }
+        public virtual Livre Livre { get; set; }
     }
 }

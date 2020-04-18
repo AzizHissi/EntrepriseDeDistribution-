@@ -10,13 +10,11 @@ using System.Windows.Forms;
 
 namespace EntrepriseDeDistribution
 {
-    public partial class ChercheDate : UserControl
+    public partial class Graphe_F : UserControl
     {
-        public ChercheDate()
+        public Graphe_F()
         {
             InitializeComponent();
         }
-
-       
     }
 }

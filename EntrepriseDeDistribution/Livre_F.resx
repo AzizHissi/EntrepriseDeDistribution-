@@ -118,7 +118,37 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="button4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="button8.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAHRJREFUOE9j
+        GAVkARYg1oEwsYJ6IHaAMPGDbiD+DMQ2YB4m+A/EIMMIAgkgvg7EuAwj2iAQwGcYSQaBAC7DSDaIB4gP
+        A/FvIA4GCUABSQbhMgQEiDYInyEgQLRB/UCMyxAQIMlFzhAmVgAyhKgEOQqQAQMDAOKkHjYJo16CAAAA
+        AElFTkSuQmCC
+</value>
+  </data>
+  <data name="button7.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAADxJREFUOE9j
+        GAUUAwMoTRHwBuL/QJwP5lEAWIB4NRAPc8P6gRhkEIgmGwweQ/yBmGJDYABk2CigCmBgAACn8xDEcCXC
+        XwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="button6.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAD1JREFUOE9j
+        GAVUBQZQmiKQD8T/gdgBzCMTwAzpB/PIBIPHEBAAGQAyCGQgxWDwG0ZR9MOAP5QeBWQBBgYAftAP6i05
+        DU8AAAAASUVORK5CYII=
+</value>
+  </data>
+  <data name="button5.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAHFJREFUOE9j
+        GAVkAQcgrocwsQIdIGaBMPEDkCH/IUwMYAPEn4EYn0VwgMsgmCGHgZgHJEAIYDOIZENAAN0gsgwBAXSD
+        goH4NxCvBmKiAhkGsHmNLMNwBTbJhuEyCARghoHUEASEEqQzEJMU6KMABBgYACodHVq8IG9YAAAAAElF
+        TkSuQmCC
+</value>
+  </data>
+  <data name="btn_delet.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAItJREFUOE/d
         ksENgCAQBCnFUkwswqelWBIF+LAMS/BpCbqbSHIeIPtmkklE7pbDGPpngCOc4AHvVz7zHfdY02SFqbkm
@@ -126,7 +156,7 @@
         ZnhBH3LC6undE8IDv/1lQ7EXzpAAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="button3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_edit.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAHhJREFUOE/t
         j7ENgDAMBFMwBCOwCSUFozAIgzAE4zACBQX8ISylSGFMgxAnnawUOdnpE7RykNX5CtLJTe5ykqFYLRu5
@@ -134,11 +164,19 @@
         8wAAAABJRU5ErkJggg==
 </value>
   </data>
-  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_add.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAEhJREFUOE9j
         GNkgHoiDIUzKwH8gvg9hUgaGiUH5QAzShIxBBv1GEwNhvBFQD8QgjcRgUGySBECaQC6gGAxjg0ARAIrN
         kQkYGACF1iUZ4+5XmwAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btn_new.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAABGdBTUEAALGPC/xhBQAAAH5JREFUOE/l
+        k9EJgCAURf3oowH6aMtGaZDGaIhGaIy6V7rwEHsP/fXAQSI5KGoai/kbPcI5C7zglr/q7PCEbmyCB3xg
+        LcYI/3EM+Ys1RUQZ64oIG+uOCK1EK+vCbsc7ABcbIdFpVikjoim2whuWEaEYL214uxnzYIwvYAxSegG+
+        jSWhIQFKnAAAAABJRU5ErkJggg==
 </value>
   </data>
 </root>

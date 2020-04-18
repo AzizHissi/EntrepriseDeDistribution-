@@ -1,0 +1,637 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EntrepriseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Depot">
+          <Key>
+            <PropertyRef Name="Numero Depot" />
+          </Key>
+          <Property Name="Numero Depot" Type="int" Nullable="false" />
+          <Property Name="Nom Depot" Type="varchar" MaxLength="30" />
+          <Property Name="Code Region" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Ecrit">
+          <Key>
+            <PropertyRef Name="Numero Livre" />
+            <PropertyRef Name="Numero Ecrivain" />
+          </Key>
+          <Property Name="Numero Livre" Type="int" Nullable="false" />
+          <Property Name="Numero Ecrivain" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ecrivain">
+          <Key>
+            <PropertyRef Name="Numero Ecrivain" />
+          </Key>
+          <Property Name="Numero Ecrivain" Type="int" Nullable="false" />
+          <Property Name="Nom Ecrivain" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Editeur">
+          <Key>
+            <PropertyRef Name="Numero Editeur" />
+          </Key>
+          <Property Name="Numero Editeur" Type="int" Nullable="false" />
+          <Property Name="Nom Editeur" Type="varchar" MaxLength="30" />
+          <Property Name="Raison Sociale" Type="varchar" MaxLength="10" />
+          <Property Name="Adresse" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Edition">
+          <Key>
+            <PropertyRef Name="Numero Livre" />
+            <PropertyRef Name="Numero Editeur" />
+          </Key>
+          <Property Name="Numero Livre" Type="int" Nullable="false" />
+          <Property Name="Numero Editeur" Type="int" Nullable="false" />
+          <Property Name="Annee D'edition" Type="date" />
+        </EntityType>
+        <EntityType Name="Livre">
+          <Key>
+            <PropertyRef Name="Numero Livre" />
+          </Key>
+          <Property Name="Numero Livre" Type="int" Nullable="false" />
+          <Property Name="Nom Livre" Type="varchar" MaxLength="30" />
+          <Property Name="Numero Theme" Type="int" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Code Region" />
+          </Key>
+          <Property Name="Code Region" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="Nom Region" Type="varchar" MaxLength="30" />
+          <Property Name="Population" Type="int" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="Numero Livre" />
+            <PropertyRef Name="Numero Editeur" />
+            <PropertyRef Name="Numero Depot" />
+          </Key>
+          <Property Name="Numero Livre" Type="int" Nullable="false" />
+          <Property Name="Numero Editeur" Type="int" Nullable="false" />
+          <Property Name="Numero Depot" Type="int" Nullable="false" />
+          <Property Name="Quantite" Type="int" />
+        </EntityType>
+        <EntityType Name="Theme">
+          <Key>
+            <PropertyRef Name="Numero Theme" />
+          </Key>
+          <Property Name="Numero Theme" Type="int" Nullable="false" />
+          <Property Name="Nom Theme" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'Entreprise.dbo.V_graph' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="V_graph">
+          <Property Name="Nom Livre" Type="varchar" MaxLength="30" />
+          <Property Name="Total en stock" Type="int" />
+        </EntityType>-->
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Entreprise.dbo.V_Recherche' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_Recherche">
+          <Key>
+            <PropertyRef Name="Numero Livre" />
+          </Key>
+          <Property Name="Numero Livre" Type="int" Nullable="false" />
+          <Property Name="Nom Livre" Type="varchar" MaxLength="30" />
+          <Property Name="Numero Theme" Type="int" />
+          <Property Name="Annee D'edition" Type="date" />
+        </EntityType>
+        <Association Name="FK__Depot__Code Regi__36B12243">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Depot" Type="Self.Depot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Code Region" />
+            </Principal>
+            <Dependent Role="Depot">
+              <PropertyRef Name="Code Region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ecrit__Numero Ec__2C3393D0">
+          <End Role="Ecrivain" Type="Self.Ecrivain" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ecrit" Type="Self.Ecrit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ecrivain">
+              <PropertyRef Name="Numero Ecrivain" />
+            </Principal>
+            <Dependent Role="Ecrit">
+              <PropertyRef Name="Numero Ecrivain" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Ecrit__Numero Li__2B3F6F97">
+          <End Role="Livre" Type="Self.Livre" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Ecrit" Type="Self.Ecrit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Livre">
+              <PropertyRef Name="Numero Livre" />
+            </Principal>
+            <Dependent Role="Ecrit">
+              <PropertyRef Name="Numero Livre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Edition__Numero __30F848ED">
+          <End Role="Livre" Type="Self.Livre" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Edition" Type="Self.Edition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Livre">
+              <PropertyRef Name="Numero Livre" />
+            </Principal>
+            <Dependent Role="Edition">
+              <PropertyRef Name="Numero Livre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Edition__Numero __31EC6D26">
+          <End Role="Editeur" Type="Self.Editeur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Edition" Type="Self.Edition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Editeur">
+              <PropertyRef Name="Numero Editeur" />
+            </Principal>
+            <Dependent Role="Edition">
+              <PropertyRef Name="Numero Editeur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Livre__Numero Th__286302EC">
+          <End Role="Theme" Type="Self.Theme" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Livre" Type="Self.Livre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theme">
+              <PropertyRef Name="Numero Theme" />
+            </Principal>
+            <Dependent Role="Livre">
+              <PropertyRef Name="Numero Theme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__Numero De__3B75D760">
+          <End Role="Depot" Type="Self.Depot" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depot">
+              <PropertyRef Name="Numero Depot" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="Numero Depot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__Numero Ed__3A81B327">
+          <End Role="Editeur" Type="Self.Editeur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Editeur">
+              <PropertyRef Name="Numero Editeur" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="Numero Editeur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__Numero Li__398D8EEE">
+          <End Role="Livre" Type="Self.Livre" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Livre">
+              <PropertyRef Name="Numero Livre" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="Numero Livre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EntrepriseModelStoreContainer">
+          <EntitySet Name="Depot" EntityType="Self.Depot" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ecrit" EntityType="Self.Ecrit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ecrivain" EntityType="Self.Ecrivain" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Editeur" EntityType="Self.Editeur" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Edition" EntityType="Self.Edition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Livre" EntityType="Self.Livre" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Theme" EntityType="Self.Theme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_Recherche" EntityType="Self.V_Recherche" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[V_Recherche].[Numero Livre] AS [Numero Livre], 
+[V_Recherche].[Nom Livre] AS [Nom Livre], 
+[V_Recherche].[Numero Theme] AS [Numero Theme], 
+[V_Recherche].[Annee D'edition] AS [Annee D'edition]
+FROM [dbo].[V_Recherche] AS [V_Recherche]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Depot__Code Regi__36B12243" Association="Self.FK__Depot__Code Regi__36B12243">
+            <End Role="Region" EntitySet="Region" />
+            <End Role="Depot" EntitySet="Depot" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ecrit__Numero Ec__2C3393D0" Association="Self.FK__Ecrit__Numero Ec__2C3393D0">
+            <End Role="Ecrivain" EntitySet="Ecrivain" />
+            <End Role="Ecrit" EntitySet="Ecrit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Ecrit__Numero Li__2B3F6F97" Association="Self.FK__Ecrit__Numero Li__2B3F6F97">
+            <End Role="Livre" EntitySet="Livre" />
+            <End Role="Ecrit" EntitySet="Ecrit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Edition__Numero __30F848ED" Association="Self.FK__Edition__Numero __30F848ED">
+            <End Role="Livre" EntitySet="Livre" />
+            <End Role="Edition" EntitySet="Edition" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Edition__Numero __31EC6D26" Association="Self.FK__Edition__Numero __31EC6D26">
+            <End Role="Editeur" EntitySet="Editeur" />
+            <End Role="Edition" EntitySet="Edition" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Livre__Numero Th__286302EC" Association="Self.FK__Livre__Numero Th__286302EC">
+            <End Role="Theme" EntitySet="Theme" />
+            <End Role="Livre" EntitySet="Livre" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__Numero De__3B75D760" Association="Self.FK__Stock__Numero De__3B75D760">
+            <End Role="Depot" EntitySet="Depot" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__Numero Ed__3A81B327" Association="Self.FK__Stock__Numero Ed__3A81B327">
+            <End Role="Editeur" EntitySet="Editeur" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__Numero Li__398D8EEE" Association="Self.FK__Stock__Numero Li__398D8EEE">
+            <End Role="Livre" EntitySet="Livre" />
+            <End Role="Stock" EntitySet="Stock" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EntrepriseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Depot">
+          <Key>
+            <PropertyRef Name="Numero_Depot" />
+          </Key>
+          <Property Name="Numero_Depot" Type="Int32" Nullable="false" />
+          <Property Name="Nom_Depot" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Code_Region" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Region" Relationship="Self.FK__Depot__Code_Regi__36B12243" FromRole="Depot" ToRole="Region" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__Numero_De__3B75D760" FromRole="Depot" ToRole="Stock" />
+        </EntityType>
+        <EntityType Name="Ecrivain">
+          <Key>
+            <PropertyRef Name="Numero_Ecrivain" />
+          </Key>
+          <Property Name="Numero_Ecrivain" Type="Int32" Nullable="false" />
+          <Property Name="Nom_Ecrivain" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Livres" Relationship="Self.Ecrit" FromRole="Ecrivain" ToRole="Livre" />
+        </EntityType>
+        <EntityType Name="Editeur">
+          <Key>
+            <PropertyRef Name="Numero_Editeur" />
+          </Key>
+          <Property Name="Numero_Editeur" Type="Int32" Nullable="false" />
+          <Property Name="Nom_Editeur" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Raison_Sociale" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Adresse" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Editions" Relationship="Self.FK__Edition__Numero___31EC6D26" FromRole="Editeur" ToRole="Edition" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__Numero_Ed__3A81B327" FromRole="Editeur" ToRole="Stock" />
+        </EntityType>
+        <EntityType Name="Edition">
+          <Key>
+            <PropertyRef Name="Numero_Livre" />
+            <PropertyRef Name="Numero_Editeur" />
+          </Key>
+          <Property Name="Numero_Livre" Type="Int32" Nullable="false" />
+          <Property Name="Numero_Editeur" Type="Int32" Nullable="false" />
+          <Property Name="Annee_D_edition" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Editeur" Relationship="Self.FK__Edition__Numero___31EC6D26" FromRole="Edition" ToRole="Editeur" />
+          <NavigationProperty Name="Livre" Relationship="Self.FK__Edition__Numero___30F848ED" FromRole="Edition" ToRole="Livre" />
+        </EntityType>
+        <EntityType Name="Livre">
+          <Key>
+            <PropertyRef Name="Numero_Livre" />
+          </Key>
+          <Property Name="Numero_Livre" Type="Int32" Nullable="false" />
+          <Property Name="Nom_Livre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Numero_Theme" Type="Int32" />
+          <NavigationProperty Name="Editions" Relationship="Self.FK__Edition__Numero___30F848ED" FromRole="Livre" ToRole="Edition" />
+          <NavigationProperty Name="Theme" Relationship="Self.FK__Livre__Numero_Th__286302EC" FromRole="Livre" ToRole="Theme" />
+          <NavigationProperty Name="Stocks" Relationship="Self.FK__Stock__Numero_Li__398D8EEE" FromRole="Livre" ToRole="Stock" />
+          <NavigationProperty Name="Ecrivains" Relationship="Self.Ecrit" FromRole="Livre" ToRole="Ecrivain" />
+        </EntityType>
+        <EntityType Name="Region">
+          <Key>
+            <PropertyRef Name="Code_Region" />
+          </Key>
+          <Property Name="Code_Region" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nom_Region" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Population" Type="Int32" />
+          <NavigationProperty Name="Depots" Relationship="Self.FK__Depot__Code_Regi__36B12243" FromRole="Region" ToRole="Depot" />
+        </EntityType>
+        <EntityType Name="Stock">
+          <Key>
+            <PropertyRef Name="Numero_Livre" />
+            <PropertyRef Name="Numero_Editeur" />
+            <PropertyRef Name="Numero_Depot" />
+          </Key>
+          <Property Name="Numero_Livre" Type="Int32" Nullable="false" />
+          <Property Name="Numero_Editeur" Type="Int32" Nullable="false" />
+          <Property Name="Numero_Depot" Type="Int32" Nullable="false" />
+          <Property Name="Quantite" Type="Int32" />
+          <NavigationProperty Name="Depot" Relationship="Self.FK__Stock__Numero_De__3B75D760" FromRole="Stock" ToRole="Depot" />
+          <NavigationProperty Name="Editeur" Relationship="Self.FK__Stock__Numero_Ed__3A81B327" FromRole="Stock" ToRole="Editeur" />
+          <NavigationProperty Name="Livre" Relationship="Self.FK__Stock__Numero_Li__398D8EEE" FromRole="Stock" ToRole="Livre" />
+        </EntityType>
+        <EntityType Name="Theme">
+          <Key>
+            <PropertyRef Name="Numero_Theme" />
+          </Key>
+          <Property Name="Numero_Theme" Type="Int32" Nullable="false" />
+          <Property Name="Nom_Theme" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Livres" Relationship="Self.FK__Livre__Numero_Th__286302EC" FromRole="Theme" ToRole="Livre" />
+        </EntityType>
+        <Association Name="FK__Depot__Code_Regi__36B12243">
+          <End Role="Region" Type="Self.Region" Multiplicity="0..1" />
+          <End Role="Depot" Type="Self.Depot" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Region">
+              <PropertyRef Name="Code_Region" />
+            </Principal>
+            <Dependent Role="Depot">
+              <PropertyRef Name="Code_Region" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__Numero_De__3B75D760">
+          <End Role="Depot" Type="Self.Depot" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Depot">
+              <PropertyRef Name="Numero_Depot" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="Numero_Depot" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Edition__Numero___31EC6D26">
+          <End Role="Editeur" Type="Self.Editeur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Edition" Type="Self.Edition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Editeur">
+              <PropertyRef Name="Numero_Editeur" />
+            </Principal>
+            <Dependent Role="Edition">
+              <PropertyRef Name="Numero_Editeur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__Numero_Ed__3A81B327">
+          <End Role="Editeur" Type="Self.Editeur" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Editeur">
+              <PropertyRef Name="Numero_Editeur" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="Numero_Editeur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Edition__Numero___30F848ED">
+          <End Role="Livre" Type="Self.Livre" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Edition" Type="Self.Edition" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Livre">
+              <PropertyRef Name="Numero_Livre" />
+            </Principal>
+            <Dependent Role="Edition">
+              <PropertyRef Name="Numero_Livre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Livre__Numero_Th__286302EC">
+          <End Role="Theme" Type="Self.Theme" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Livre" Type="Self.Livre" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Theme">
+              <PropertyRef Name="Numero_Theme" />
+            </Principal>
+            <Dependent Role="Livre">
+              <PropertyRef Name="Numero_Theme" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Stock__Numero_Li__398D8EEE">
+          <End Role="Livre" Type="Self.Livre" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Livre">
+              <PropertyRef Name="Numero_Livre" />
+            </Principal>
+            <Dependent Role="Stock">
+              <PropertyRef Name="Numero_Livre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Ecrit">
+          <End Role="Ecrivain" Type="Self.Ecrivain" Multiplicity="*" />
+          <End Role="Livre" Type="Self.Livre" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="EntrepriseEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Depots" EntityType="Self.Depot" />
+          <EntitySet Name="Ecrivains" EntityType="Self.Ecrivain" />
+          <EntitySet Name="Editeurs" EntityType="Self.Editeur" />
+          <EntitySet Name="Editions" EntityType="Self.Edition" />
+          <EntitySet Name="Livres" EntityType="Self.Livre" />
+          <EntitySet Name="Regions" EntityType="Self.Region" />
+          <EntitySet Name="Stocks" EntityType="Self.Stock" />
+          <EntitySet Name="Themes" EntityType="Self.Theme" />
+          <AssociationSet Name="FK__Depot__Code_Regi__36B12243" Association="Self.FK__Depot__Code_Regi__36B12243">
+            <End Role="Region" EntitySet="Regions" />
+            <End Role="Depot" EntitySet="Depots" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__Numero_De__3B75D760" Association="Self.FK__Stock__Numero_De__3B75D760">
+            <End Role="Depot" EntitySet="Depots" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Edition__Numero___31EC6D26" Association="Self.FK__Edition__Numero___31EC6D26">
+            <End Role="Editeur" EntitySet="Editeurs" />
+            <End Role="Edition" EntitySet="Editions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__Numero_Ed__3A81B327" Association="Self.FK__Stock__Numero_Ed__3A81B327">
+            <End Role="Editeur" EntitySet="Editeurs" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Edition__Numero___30F848ED" Association="Self.FK__Edition__Numero___30F848ED">
+            <End Role="Livre" EntitySet="Livres" />
+            <End Role="Edition" EntitySet="Editions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Livre__Numero_Th__286302EC" Association="Self.FK__Livre__Numero_Th__286302EC">
+            <End Role="Theme" EntitySet="Themes" />
+            <End Role="Livre" EntitySet="Livres" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Stock__Numero_Li__398D8EEE" Association="Self.FK__Stock__Numero_Li__398D8EEE">
+            <End Role="Livre" EntitySet="Livres" />
+            <End Role="Stock" EntitySet="Stocks" />
+          </AssociationSet>
+          <AssociationSet Name="Ecrit" Association="Self.Ecrit">
+            <End Role="Ecrivain" EntitySet="Ecrivains" />
+            <End Role="Livre" EntitySet="Livres" />
+          </AssociationSet>
+          <EntitySet Name="V_Recherche" EntityType="EntrepriseModel.V_Recherche" />
+        </EntityContainer>
+        <EntityType Name="V_Recherche">
+          <Key>
+            <PropertyRef Name="Numero_Livre" />
+          </Key>
+          <Property Name="Numero_Livre" Type="Int32" Nullable="false" />
+          <Property Name="Nom_Livre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Numero_Theme" Type="Int32" />
+          <Property Name="Annee_D_edition" Type="DateTime" Precision="0" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EntrepriseModelStoreContainer" CdmEntityContainer="EntrepriseEntities">
+          <EntitySetMapping Name="Depots">
+            <EntityTypeMapping TypeName="EntrepriseModel.Depot">
+              <MappingFragment StoreEntitySet="Depot">
+                <ScalarProperty Name="Numero_Depot" ColumnName="Numero Depot" />
+                <ScalarProperty Name="Nom_Depot" ColumnName="Nom Depot" />
+                <ScalarProperty Name="Code_Region" ColumnName="Code Region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ecrivains">
+            <EntityTypeMapping TypeName="EntrepriseModel.Ecrivain">
+              <MappingFragment StoreEntitySet="Ecrivain">
+                <ScalarProperty Name="Numero_Ecrivain" ColumnName="Numero Ecrivain" />
+                <ScalarProperty Name="Nom_Ecrivain" ColumnName="Nom Ecrivain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Editeurs">
+            <EntityTypeMapping TypeName="EntrepriseModel.Editeur">
+              <MappingFragment StoreEntitySet="Editeur">
+                <ScalarProperty Name="Numero_Editeur" ColumnName="Numero Editeur" />
+                <ScalarProperty Name="Nom_Editeur" ColumnName="Nom Editeur" />
+                <ScalarProperty Name="Raison_Sociale" ColumnName="Raison Sociale" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Editions">
+            <EntityTypeMapping TypeName="EntrepriseModel.Edition">
+              <MappingFragment StoreEntitySet="Edition">
+                <ScalarProperty Name="Numero_Livre" ColumnName="Numero Livre" />
+                <ScalarProperty Name="Numero_Editeur" ColumnName="Numero Editeur" />
+                <ScalarProperty Name="Annee_D_edition" ColumnName="Annee D'edition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Livres">
+            <EntityTypeMapping TypeName="EntrepriseModel.Livre">
+              <MappingFragment StoreEntitySet="Livre">
+                <ScalarProperty Name="Numero_Livre" ColumnName="Numero Livre" />
+                <ScalarProperty Name="Nom_Livre" ColumnName="Nom Livre" />
+                <ScalarProperty Name="Numero_Theme" ColumnName="Numero Theme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Regions">
+            <EntityTypeMapping TypeName="EntrepriseModel.Region">
+              <MappingFragment StoreEntitySet="Region">
+                <ScalarProperty Name="Code_Region" ColumnName="Code Region" />
+                <ScalarProperty Name="Nom_Region" ColumnName="Nom Region" />
+                <ScalarProperty Name="Population" ColumnName="Population" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stocks">
+            <EntityTypeMapping TypeName="EntrepriseModel.Stock">
+              <MappingFragment StoreEntitySet="Stock">
+                <ScalarProperty Name="Numero_Livre" ColumnName="Numero Livre" />
+                <ScalarProperty Name="Numero_Editeur" ColumnName="Numero Editeur" />
+                <ScalarProperty Name="Numero_Depot" ColumnName="Numero Depot" />
+                <ScalarProperty Name="Quantite" ColumnName="Quantite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Themes">
+            <EntityTypeMapping TypeName="EntrepriseModel.Theme">
+              <MappingFragment StoreEntitySet="Theme">
+                <ScalarProperty Name="Numero_Theme" ColumnName="Numero Theme" />
+                <ScalarProperty Name="Nom_Theme" ColumnName="Nom Theme" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Ecrit" TypeName="EntrepriseModel.Ecrit" StoreEntitySet="Ecrit">
+            <EndProperty Name="Ecrivain">
+              <ScalarProperty Name="Numero_Ecrivain" ColumnName="Numero Ecrivain" />
+            </EndProperty>
+            <EndProperty Name="Livre">
+              <ScalarProperty Name="Numero_Livre" ColumnName="Numero Livre" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="V_Recherche">
+            <EntityTypeMapping TypeName="EntrepriseModel.V_Recherche">
+              <MappingFragment StoreEntitySet="V_Recherche">
+                <ScalarProperty Name="Annee_D_edition" ColumnName="Annee D'edition" />
+                <ScalarProperty Name="Numero_Theme" ColumnName="Numero Theme" />
+                <ScalarProperty Name="Nom_Livre" ColumnName="Nom Livre" />
+                <ScalarProperty Name="Numero_Livre" ColumnName="Numero Livre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
