@@ -34,5 +34,6 @@ namespace EntrepriseDeDistribution
         public DbSet<Stock> Stocks { get; set; }
         public DbSet<Theme> Themes { get; set; }
         public DbSet<V_Recherche> V_Recherche { get; set; }
+        public DbSet<V_graphe> V_graphe { get; set; }
     }
 }

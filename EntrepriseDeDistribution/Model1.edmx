@@ -81,11 +81,15 @@
           <Property Name="Nom Theme" Type="varchar" MaxLength="20" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6013: The table/view 'Entreprise.dbo.V_graph' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="V_graph">
-          <Property Name="Nom Livre" Type="varchar" MaxLength="30" />
+warning 6002: The table/view 'Entreprise.dbo.V_graphe' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="V_graphe">
+          <Key>
+            <PropertyRef Name="Numero Depot" />
+          </Key>
+          <Property Name="Numero Depot" Type="int" Nullable="false" />
+          <Property Name="Nom Depot" Type="varchar" MaxLength="30" />
           <Property Name="Total en stock" Type="int" />
-        </EntityType>-->
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Entreprise.dbo.V_Recherche' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="V_Recherche">
@@ -231,6 +235,13 @@ warning 6002: The table/view 'Entreprise.dbo.V_Recherche' does not have a primar
           <EntitySet Name="Region" EntityType="Self.Region" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Theme" EntityType="Self.Theme" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="V_graphe" EntityType="Self.V_graphe" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[V_graphe].[Numero Depot] AS [Numero Depot], 
+[V_graphe].[Nom Depot] AS [Nom Depot], 
+[V_graphe].[Total en stock] AS [Total en stock]
+FROM [dbo].[V_graphe] AS [V_graphe]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="V_Recherche" EntityType="Self.V_Recherche" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
 [V_Recherche].[Numero Livre] AS [Numero Livre], 
@@ -505,6 +516,7 @@ FROM [dbo].[V_Recherche] AS [V_Recherche]</DefiningQuery>
             <End Role="Livre" EntitySet="Livres" />
           </AssociationSet>
           <EntitySet Name="V_Recherche" EntityType="EntrepriseModel.V_Recherche" />
+          <EntitySet Name="V_graphe" EntityType="EntrepriseModel.V_graphe" />
         </EntityContainer>
         <EntityType Name="V_Recherche">
           <Key>
@@ -514,6 +526,14 @@ FROM [dbo].[V_Recherche] AS [V_Recherche]</DefiningQuery>
           <Property Name="Nom_Livre" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Numero_Theme" Type="Int32" />
           <Property Name="Annee_D_edition" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="V_graphe">
+          <Key>
+            <PropertyRef Name="Numero_Depot" />
+          </Key>
+          <Property Name="Numero_Depot" Type="Int32" Nullable="false" />
+          <Property Name="Nom_Depot" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Total_en_stock" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -608,6 +628,15 @@ FROM [dbo].[V_Recherche] AS [V_Recherche]</DefiningQuery>
                 <ScalarProperty Name="Numero_Theme" ColumnName="Numero Theme" />
                 <ScalarProperty Name="Nom_Livre" ColumnName="Nom Livre" />
                 <ScalarProperty Name="Numero_Livre" ColumnName="Numero Livre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="V_graphe">
+            <EntityTypeMapping TypeName="EntrepriseModel.V_graphe">
+              <MappingFragment StoreEntitySet="V_graphe">
+                <ScalarProperty Name="Total_en_stock" ColumnName="Total en stock" />
+                <ScalarProperty Name="Nom_Depot" ColumnName="Nom Depot" />
+                <ScalarProperty Name="Numero_Depot" ColumnName="Numero Depot" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

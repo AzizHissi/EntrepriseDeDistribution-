@@ -22,6 +22,7 @@
         <AssociationConnector Association="EntrepriseModel.FK__Stock__Numero_Li__398D8EEE" ManuallyRouted="false" />
         <AssociationConnector Association="EntrepriseModel.Ecrit" ManuallyRouted="false" />
         <EntityTypeShape EntityType="EntrepriseModel.V_Recherche" Width="1.5" PointX="5.75" PointY="6.875" />
+        <EntityTypeShape EntityType="EntrepriseModel.V_graphe" Width="1.5" PointX="7.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
